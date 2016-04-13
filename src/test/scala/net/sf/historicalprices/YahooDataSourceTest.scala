@@ -20,7 +20,7 @@ class YahooDataSourceTest extends WordSpec with Matchers{
 
 
       val date: LocalDate = LocalDate.parse("2015-12-09")
-      val expected = DailyPrice(date,2.37,2.40,2.32,2.35,6436700,2.35)
+      val expected = DailyPrice(date,2.37,2.40,2.32,2.35,8436700,2.35)
 
       actual should be (expected)
     }
