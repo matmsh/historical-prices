@@ -5,7 +5,6 @@ import java.util.concurrent.TimeUnit
 import dispatch.Defaults._
 import dispatch.{Future, Http, url, _}
 import org.joda.time.LocalDate
-import org.joda.time.format.DateTimeFormat
 import org.slf4j.LoggerFactory
 
 import scala.concurrent.Await
@@ -27,7 +26,8 @@ trait DataSource {
     * @param businessDate
     * @param ticker
     * @return Daily prices for ticker from (businessDate - yr)
-    *         to (businessDate), inclusively.
+    *         to (businessDate), inclusively. The DailyPrices are in
+    *         Chronological descending order. The first one is the lastest.
     */
   def dailyPrices(businessDate: LocalDate, ticker: String): Seq[DailyPrice]
 

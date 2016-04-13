@@ -1,7 +1,10 @@
 import sbt._
 import sbt.Keys._
 
-   
+
+/**
+  * To run sCoverage : sbt clean coverage test coverageReport
+  */
 object HistoricalPricesScalaBuild  extends Build {
  
   val _organization="net.sf"
