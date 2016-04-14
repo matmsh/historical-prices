@@ -13,7 +13,7 @@ object PricesURLProvider {
     *
     * @param businessDate
     * @param ticker
-    * @return A url to downloads daily prices,from Yahoo, for ticker from (businessDate - yr)
+    * @return A url to download daily prices,from Yahoo, for ticker from (businessDate - yr)
     *         to (businessDate), inclusively.
     */
   def pricesURL(businessDate: LocalDate, ticker: String): String = {
