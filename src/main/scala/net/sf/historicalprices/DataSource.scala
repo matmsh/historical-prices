@@ -27,7 +27,7 @@ trait DataSource {
     * @param ticker
     * @return Daily prices for ticker from (businessDate - yr)
     *         to (businessDate), inclusively. The DailyPrices are in
-    *         Chronological descending order. The first one is the lastest.
+    *         Chronological descending order. The first one is the latest.
     */
   def dailyPrices(businessDate: LocalDate, ticker: String): Seq[DailyPrice]
 
@@ -66,9 +66,13 @@ object YahooDataSource extends DataSource {
       response => {
         val inStream = response.getResponseBodyAsStream
 
-        // Drop the first line, which is the column headers.
-        val lines = Source.fromInputStream(inStream).getLines().drop(1)
-        lines.map(lineToDailyPrice).toSeq
+        try {
+          // Drop the first line, which is the column headers.
+          val lines = Source.fromInputStream(inStream).getLines().drop(1)
+          lines.map(lineToDailyPrice).toSeq
+        } finally{
+           inStream.close()
+        }
       }
     }
 

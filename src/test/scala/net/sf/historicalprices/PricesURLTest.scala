@@ -15,8 +15,6 @@ class PricesURLTest extends WordSpec with Matchers{
 
       val urlActual = pricesURL(date20151201,"AMD")
 
-      println(urlActual)
-
       val urlExpected = """http://real-chart.finance.yahoo.com/table.csv?s=AMD&a=11&b=01&c=2014&d=11&e=01&f=2015&g=d&ignore=.csv"""
       urlActual should be (urlExpected)
 

@@ -1,7 +1,5 @@
 package net.sf.historicalprices
 
-import org.joda.time.LocalDate
-
 
 object HistoricalPricesDemo {
 
@@ -16,7 +14,6 @@ object HistoricalPricesDemo {
     }
 
     val ticker = args(0)
-    val today = LocalDate.now()
 
     val dataSrc = YahooDataSource
 
@@ -28,11 +25,12 @@ object HistoricalPricesDemo {
     val meanReturn = pricesService.meanReturn(ticker)
 
 
-
     println(
       s"""One year data for $ticker:
          |  no of daily prices = ${dailyPrices.size}
+         |  Last 3 latest prices = ${dailyPrices.take(3)}
          |  no of daily returns = ${dailyReturn.size}
+         |  Last 3 latest returns = ${dailyReturn.take(2)}
          |  meanReturn = ${meanReturn}
        """.stripMargin
 

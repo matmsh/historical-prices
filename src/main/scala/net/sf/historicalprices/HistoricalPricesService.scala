@@ -1,6 +1,7 @@
 package net.sf.historicalprices
 
 import org.joda.time.LocalDate
+import org.slf4j.LoggerFactory
 
 
 trait HistoricalPricesService {
@@ -11,6 +12,8 @@ trait HistoricalPricesService {
     * @param ticker
     * @return  1 year (from (today - year) to today inclusively)
     *          historical (closing) prices of a given ticker.
+    *          The prices are in
+    *         Chronological descending order. The first one is the latest.
     */
   def dailyPrices(ticker: String) : List[Double]
 
@@ -18,7 +21,7 @@ trait HistoricalPricesService {
 
 
   /**
-    * daily returns, where return = ( Price_Today – Price_Yesterday)/Price_Yesterday
+    * Daily returns, where return = ( Price_Today – Price_Yesterday)/Price_Yesterday
     * @param ticker
     * @return The daily returns in the last year for given ticker.
     */
@@ -65,14 +68,28 @@ trait HistoricalPricesService {
 
 
 trait BasePricesService extends HistoricalPricesService {
+  val logger = LoggerFactory.getLogger(this.getClass)
 
   val dataSource:DataSource
 
+  /**
+    *
+    * @param ticker
+    * @return  1 year (from (today - year) to today inclusively)
+    *          historical (closing) prices of a given ticker.
+    *          The prices are in
+    *         Chronological descending order. The first one is the latest.
+    */
   def dailyPrices(ticker: String) : List[Double] ={
 
     val today = LocalDate.now()
 
     val dailyPrices = dataSource.dailyPrices(today,ticker)
+
+    logger.info(
+      s"""Lastest price:${dailyPrices.headOption}
+         |Earliers price:${dailyPrices.lastOption}
+         |"""".stripMargin)
 
     dailyPrices.map(_.close).toList
   }
