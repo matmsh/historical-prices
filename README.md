@@ -26,7 +26,7 @@ One year data for GOOG:
   no of daily prices = 253
   Last 3 latest prices = List(751.719971, 743.090027, 736.099976)
   no of daily returns = 252
-  Last 3 latest returns = List(0.01161359147133329, 0.009496061986014784)
+  Last 2 latest returns = List(0.01161359147133329, 0.009496061986014784)
   meanReturn = 0.001561435109716154
 
 [success] Total time: 4 s, completed 14-Apr-2016 21:14:02

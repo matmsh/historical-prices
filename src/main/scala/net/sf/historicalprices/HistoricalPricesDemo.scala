@@ -34,7 +34,7 @@ object HistoricalPricesDemo {
          |  no of daily prices = ${dailyPrices.size}
          |  Last 3 latest prices = ${dailyPrices.take(3)}
          |  no of daily returns = ${dailyReturn.size}
-         |  Last 3 latest returns = ${dailyReturn.take(2)}
+         |  Last 2 latest returns = ${dailyReturn.take(2)}
          |  meanReturn = ${meanReturn}
        """.stripMargin
 
