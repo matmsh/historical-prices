@@ -1,5 +1,9 @@
 package net.sf.historicalprices
 
+import javax.xml.ws.Dispatch
+
+import dispatch.Http
+
 
 object HistoricalPricesDemo {
 
@@ -10,7 +14,7 @@ object HistoricalPricesDemo {
            | Eg GOOG
         """.stripMargin)
 
-      sys.exit(1)
+      System.exit(1)
     }
 
     val ticker = args(0)
@@ -37,7 +41,9 @@ object HistoricalPricesDemo {
 
     )
 
-    sys.exit(0)
+
+    //Todo : Find a better way to shutdown dispatch.Http
+    Http.shutdown()
 
   }
 

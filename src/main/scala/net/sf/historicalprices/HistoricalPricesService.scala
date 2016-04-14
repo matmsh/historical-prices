@@ -88,7 +88,7 @@ trait BasePricesService extends HistoricalPricesService {
 
     logger.info(
       s"""Lastest price:${dailyPrices.headOption}
-         |Earliers price:${dailyPrices.lastOption}
+         |Earliest price:${dailyPrices.lastOption}
          |"""".stripMargin)
 
     dailyPrices.map(_.close).toList
